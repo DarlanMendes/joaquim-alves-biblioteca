@@ -1,29 +1,37 @@
 import Link from "next/link";
-import styles from './styles.module.scss'
-interface propsHamburguer{
-    isActived:boolean,
-    setIsActived:Function
-}
+import styles from './styles.module.scss';
 
-export default function MenuHamburguer(props:propsHamburguer){
+interface propsHamburguer {
+    role:string,
+    isActived: boolean,
+    setIsActived: Function,
     
-    return(
-        <div className={styles.hamburguerContainer} style={props.isActived?{display:'flex'}:{display:'none'}}>
-            <ul>
+}
+export default function MenuHamburguer(props: propsHamburguer) {
+    
+    return (
+        <div className={styles.hamburguerContainer} style={props.isActived ? { display: 'flex' } : { display: 'none' }}>
+            <ul onClick={()=>props.setIsActived(false)}>
                 <li>
                     <Link href='/dashboard'> Home</Link>
                 </li>
                 <li>
                     <Link href='/meusalugueis'> Meus Alugueis</Link>
                 </li>
-                <li>
-                    <Link href='/cadastroaluno'> Cadastrar Aluno</Link>
-                </li>
-                <li>
-                    <Link href='/cadastrolivro'> Cadastrar Livro</Link>
-                </li>
+                {props?.role === 'professor' &&
+                    <>
+                        <li>
+                            <Link href='/cadastroaluno'> Cadastrar Aluno</Link>
+                        </li>
+                        <li>
+                            <Link href='/cadastrolivro'> Cadastrar Livro</Link>
+                        </li>
+                    </>
+
+                }
+
             </ul>
-            <div className={styles.rightSide} onClick={()=>props.setIsActived(false)}>
+            <div className={styles.rightSide} onClick={() => props.setIsActived(false)}>
 
             </div>
         </div>

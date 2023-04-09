@@ -1,0 +1,19 @@
+.mainContainer{
+    position:fixed;
+    top:50px;
+    margin-left: -200px;
+    padding: 20px;
+    background-color: rgb(211, 250, 253);
+    color: rgb(11, 21, 109);
+    font-weight: 700;
+    border-radius: 10px;
+    border: 1px solid black;
+    ul{
+        li{
+            list-style: none;
+            text-decoration: none;
+            margin: 10px;
+            
+        }
+    }
+}

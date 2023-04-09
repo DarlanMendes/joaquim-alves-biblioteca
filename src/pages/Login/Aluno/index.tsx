@@ -1,20 +1,12 @@
 import Image from "next/image";
 import styles from './styles.module.scss';
 import {SiGmail} from 'react-icons/si';
-import { useSession, signIn, signOut } from "next-auth/react"
-import { useRouter } from "next/router";
+import { signIn } from "next-auth/react"
+
+
+import { getSession } from "next-auth/react";
 export default function Aluno() {
 
-    const {data:session, status} = useSession()
-    const router = useRouter()
-  
-    
-   
-    if(status==='authenticated'){
-        router.push('/dashboard')
-    }
-      
-    
     return (
         <div className={styles.mainContainer}>
             <h1>Biblioteca Joaquim Alves</h1>
@@ -33,3 +25,21 @@ export default function Aluno() {
         </div>
     )
 }
+export  async function getServerSideProps(context:any){
+    //const {data:session, status} = useSession()
+    const session = await getSession(context)
+   
+    if(session){
+        if(session.user?.email?.includes('@prof.ce.gov.br')||session.user?.email?.includes('@aluno.ce.gov.br')){
+         return{
+            redirect:{
+                destination:'/dashboard',
+                permanent:false
+            }
+         }   
+        }
+    }
+    return{props:{authenticated:false}}
+
+    }
+

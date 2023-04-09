@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
-
+import {getSession} from 'next-auth/react'
 
 
 export default function Home() {
@@ -24,10 +24,29 @@ export default function Home() {
           <div className={styles.btn_login}> Sou aluno </div>
         </Link>
         <Link href={'/Login/Admin'}>
-          <div className={styles.btn_login}>Sou professor</div>
+          <div className={styles.btn_login}> Acesso Admin</div>
         </Link>
 
       </main>
     </div>
   )
+}
+export async function getServerSideProps(context:any){
+  const session = await getSession(context)
+  if(session?.user?.email?.includes('@prof.ce.gov.br')||session?.user?.email?.includes('@aluno.ce.gov.br')){
+    return {
+      redirect:{
+        destination:'/dashboard',
+        permanent:false
+      }
+    }
+   
+  }else{
+    return{
+      props:{
+        message:'usuario desconectado'
+      }
+    }
+   }
+  
 }
