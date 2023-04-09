@@ -2,7 +2,7 @@ import {useState} from 'react';
 import NavBar from '@/components/NavBar';
 import MenuHamburguer from '@/components/MenuHamburguer';
 import styles from './styles.module.scss';
-
+import { getSession } from 'next-auth/react';
 
 interface props{
     role:string,
