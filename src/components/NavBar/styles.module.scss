@@ -1,0 +1,24 @@
+.mainContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    position:fixed;
+    background: linear-gradient(to bottom, #482344 ,#2b5166 );
+    width: 100vw;
+    top:0;
+    left: 0;
+    height:60px;
+    .userContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:10px;
+        color:white;
+        img{
+            height:auto;
+            width:50px;
+            border-radius: 50%;
+        }
+    }
+}

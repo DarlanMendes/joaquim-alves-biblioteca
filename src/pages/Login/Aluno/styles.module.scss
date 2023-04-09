@@ -1,0 +1,40 @@
+
+.mainContainer{
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #482344 ,#2b5166 );
+    background-size:130%;
+    h1{
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 20px;
+    }
+    span{
+        color:white;
+        width: 80vw;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    button{
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        opacity: 0.9;
+        background-color: white;
+        border-radius: 30px;
+        width: 80vw;
+        margin-top: 20px;
+        color: #222;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,41 @@
+.mainContainer{
+    display: flex;
+    max-height: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(240, 248, 255, 0.785);
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    text-align: center;
+    img{
+        height: auto;
+        width:80%;
+        border-radius: 5px;
+    }
+}
+@media screen and (max-width:300px){
+    .mainContainer{
+        h3{
+            font-size: 16px;
+        }
+        p{
+            font-size: 12px;
+        }
+        
+    }
+}
+@media screen and (max-width:500px){
+    .mainContainer{
+        h3{
+            font-size: 20px;
+        }
+        p{
+            font-size: 16px;
+        }
+        
+    }
+}

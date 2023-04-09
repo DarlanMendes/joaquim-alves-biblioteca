@@ -1,0 +1,30 @@
+.dashboardContainer{
+    display: flex;
+    
+    justify-content: center;
+    .containerCards{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 70px;
+        gap:10px;
+        max-width: 1040px;
+        padding: 0 10px;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width:500px){
+    .containerCards{
+    grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (min-width:700px){
+    .containerCards{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+@media screen and (min-width:900px){
+    .containerCards{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}

@@ -1,0 +1,52 @@
+
+// .color1 { #482344 }; roxo
+// .color2 { #2b5166 }; azul
+// .color3 { #429867 }; verde 
+// .color4 { #fab243 }; amarelo
+// .color5 { #e02130 };vermelho
+.mainContainer{
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+   background: linear-gradient(to bottom, #482344 ,#2b5166 );
+   background-size:130%;
+  
+    .main{
+        height: 100%;
+        max-width: 1240px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .logo{
+            color: white;
+            margin-top: 70px;
+        }
+        h1{
+            font-size: 26px;
+            color: white;
+        }
+        h3{
+            margin-top: 10px;
+            font-size: 20px;
+            color: white;
+        }
+        a{
+            text-decoration: none;
+            background-color: #e02130;
+            width: 60%;
+            font-size: 20px;
+            border-radius: 40px;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+           text-align: center;
+           cursor: pointer;
+        }
+        
+    }
+}
