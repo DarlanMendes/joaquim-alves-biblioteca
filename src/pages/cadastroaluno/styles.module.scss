@@ -1,12 +1,12 @@
 .containerCadastro{
     margin: 70px 10px 0 10px;
-    height:calc(100vh - 70px);
+    //height:calc(100vh - 70px);
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    max-width: 800px;
+    max-width: 500px;
     h2{
         margin: 20px 10px;
     }
@@ -15,7 +15,18 @@
         width:200px;
         margin-left: auto;
         margin-right: auto;
+        border-radius: 40px;
+        border: 1px solid black;
+    }
+    .inputImage{
+        background-color: #e02130;
+        padding: 5px 10px;
+        color: white;
         border-radius: 5px;
+        font-size: 15px;
+        font-weight: 500;
+        margin: 10px auto;
+        width: 80%;
     }
     .seletores{
         border:1px solid black;
@@ -24,8 +35,7 @@
         display: flex;
        flex-direction: row;
         gap: 20px;
-        margin-left: 15px;
-        margin-top: 20px;
+        margin: 20px 10px 0 10px;
         label{
             font-size: 18px;
             font-weight: 700;
@@ -53,8 +63,7 @@
     .containerInput{
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
-        margin-left: 15px;
+        margin: 20px 10px;
         padding: 20px;
         gap:20px;
         border-radius: 8px;
@@ -64,11 +73,20 @@
             font-weight: 700;
             input{
                 padding: 5px 10px;
-                width: 80vw;
-                max-width: 700px;
+                width:80vw;
+                max-width: 400px;
                 font-size: 18px;
                 border-radius: 5px;
+                margin-top: 10px;
             }
         }
+    }
+    button{
+        padding: 10px 20px;
+        background-color:#e02130;
+        border-radius: 40px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
     }
 }
