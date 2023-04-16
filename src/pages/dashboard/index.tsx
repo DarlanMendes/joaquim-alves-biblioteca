@@ -57,7 +57,7 @@ export async function getServerSideProps(context:any) {
         
     }
     
-    const db = await MongoDB()
+    const {db} = await MongoDB()
     const data = await db.collection('livros').find().toArray()
     
     if(session.user?.email?.includes('@prof.ce.gov.br')){

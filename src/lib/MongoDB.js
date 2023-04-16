@@ -16,6 +16,6 @@ export async function MongoDB(){
     }else{
         console.log("Erro ao conectar")
     }
-
-    return client.db("JoaquimAlves")
+    const db = client.db("JoaquimAlves")
+    return {db,client}
 }

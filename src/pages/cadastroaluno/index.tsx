@@ -4,6 +4,9 @@ import MenuHamburguer from '@/components/MenuHamburguer';
 import styles from './styles.module.scss';
 import { getSession } from 'next-auth/react';
 import * as ImageConversion from 'image-conversion';
+import { useRouter } from 'next/router';
+import axios from 'axios'
+import Loading from '@/components/Loading';
 interface props {
     role: string,
 
@@ -15,8 +18,33 @@ export default function CadastroAluno(props: props) {
     const [aluno, setAluno] = useState(
         { nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: '../../../public/assets/logoJA.png' }
     )
+    const[loading, setLoading]=useState(false)
+    const router = useRouter()
     
-    
+   async function cadastrarAluno(){
+   setLoading(true)
+    try{
+        const response = await axios.post(`${ router.asPath.split('/')[0]}/api/colecaoAluno`,{
+            nome:aluno.nome,
+            serie:aluno.serie,
+            turma:aluno.turma,
+            turno:aluno.turno,
+            endereco:aluno.endereco,
+            numero:aluno.numero,
+            bairro:aluno.bairro,
+            telefone:aluno.telefone,
+            email:aluno.email,
+            img:aluno.img
+        })
+        setLoading(false)
+        alert(response.data.mensagem)
+        setAluno({ nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: '../../../public/assets/logoJA.png' })
+    }catch(e){
+        alert(e)
+        setLoading(false)
+    }
+    console.log(props.role)
+   } 
 
     function handleInputChange(evento: any) {
         const { name, value } = evento.target
@@ -36,8 +64,8 @@ export default function CadastroAluno(props: props) {
     }
     function handleImgImport(e: any) {
         const file = e.target.files[0];
-        const reader: any = new FileReader();
-        console.log('1')
+        //const reader: any = new FileReader();
+       // console.log('1')
        
         
             ImageConversion.compress(file,{
@@ -66,9 +94,11 @@ export default function CadastroAluno(props: props) {
                 isActived={isActived}
                 setIsActived={setIsActived} />
             <NavBar setIsActived={setIsActived} />
+            {loading?
+            <Loading/>:
             <div className={styles.containerCadastro}>
                 <h2>Cadastramento Aluno</h2>
-                <img src={aluno.img} alt='imagem aluno' />
+                <img src={aluno?.img} alt='imagem aluno' />
                 <input type='file' className={styles.inputImage} onChange={handleImgImport} />
                 <div className={styles.seletores}>
                     <label> Série:
@@ -127,19 +157,23 @@ export default function CadastroAluno(props: props) {
 
                 </div>
 
-                <button onClick={() => console.log(aluno)}>Clique</button>
+                <button onClick={() => {cadastrarAluno()}}>Clique</button>
 
 
 
 
 
             </div>
+
+            }
+            
         </div>
     )
 }
 export async function getServerSideProps(context: any) {
     const session = await getSession(context)
-
+   
+  
     if (!session) {
 
         return {
@@ -156,7 +190,7 @@ export async function getServerSideProps(context: any) {
     if (session.user?.email?.includes('@prof.ce.gov.br')) {
         return {
             props: {
-                role: 'professor'
+                role: 'professor',
             }
         }
     }
