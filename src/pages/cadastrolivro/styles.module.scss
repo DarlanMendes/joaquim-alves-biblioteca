@@ -1,0 +1,69 @@
+.containerCadastro {
+    display: flex;
+    flex-direction: column;
+    margin: 60px 10px 0 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 250px;
+            width: 200px;
+            border: 1px solid black;
+            margin: 0px 10px 20px 10px;
+            border-radius: 10px;
+        }
+        .inputFile{
+            background-color: #e02130;
+            padding: 5px;
+            color: white;
+            border-radius: 5px;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+
+            input {
+                font-size: 18px;
+                padding: 10px 20px;
+                border-radius: 6px;
+                width: 80vw;
+                max-width: 600px;
+                margin: 5px 10px 5px 10px;
+
+
+            }
+
+            textarea {
+                font-size: 18px;
+                padding: 10px 20px;
+                border-radius: 6px;
+                width: 80vw;
+                max-width: 600px;
+                margin: 5px 10px 5px 10px;
+                min-height: 230px;
+                border: 1px solid black;
+
+            }
+        }
+        button{
+            padding:10px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            background-color: #e02130;
+            border-radius: 20px;
+            width: 80vw;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+    }
+}

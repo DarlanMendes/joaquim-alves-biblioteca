@@ -3,10 +3,11 @@ import NavBar from '@/components/NavBar';
 import MenuHamburguer from '@/components/MenuHamburguer';
 import styles from './styles.module.scss';
 import { getSession } from 'next-auth/react';
-import * as ImageConversion from 'image-conversion';
+//import * as ImageConversion from 'image-conversion';
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Loading from '@/components/Loading';
+import ConvertImageString from './../../lib/ConvertImageString'
 interface props {
     role: string,
 
@@ -62,29 +63,10 @@ export default function CadastroAluno(props: props) {
             default: setAluno((prevState) => ({ ...prevState, [name]: value }))
         }
     }
-    function handleImgImport(e: any) {
-        const file = e.target.files[0];
-        //const reader: any = new FileReader();
-       // console.log('1')
-       
+    async function handleImgImport(e: any) {
+         const imagem = await ConvertImageString(e)
         
-            ImageConversion.compress(file,{
-                quality: 0.5,
-                maxWidth: 800,
-                maxHeight: 800
-              }).then((compressed)=>{
-            ImageConversion.filetoDataURL(compressed).then((imagem)=>{
-                setAluno((prevState)=>({
-                    ...prevState,img:imagem
-                }))
-            })
-                
-                
-              })
-         
-        
-          
-          
+          setAluno((prevState)=>({...prevState,img:imagem}))  
     }
 
     return (
