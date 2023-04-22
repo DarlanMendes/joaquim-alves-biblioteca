@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar"
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { getSession } from "next-auth/react"
 import MenuHamburguer from "@/components/MenuHamburguer"
 import styles from './styles.module.scss'

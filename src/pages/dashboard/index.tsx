@@ -5,7 +5,6 @@ import NavBar from "@/components/NavBar";
 import MenuHamburguer from "@/components/MenuHamburguer";
 import { useState } from "react";
 import {getSession} from 'next-auth/react'
-import { useRouter } from "next/router";
 import Loading from "@/components/Loading";
 interface livros {  
     id:string,
@@ -23,9 +22,7 @@ interface arrayLivros extends Array<livros>{}
 export default function Dashboard(props:props){
     const[isActived, setIsActived]= useState(false)
 
-   if(true){return(
-    <Loading/>
-   )}
+ 
    
     return(
         <div className={styles.dashboardContainer}> 
