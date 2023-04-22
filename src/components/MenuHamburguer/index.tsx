@@ -21,10 +21,10 @@ export default function MenuHamburguer(props: propsHamburguer) {
                 {props?.role === 'professor' &&
                     <>
                         <li>
-                            <Link href='/cadastroaluno'> Cadastrar Aluno</Link>
+                            <Link href='/Cadastroaluno'> Cadastrar Aluno</Link>
                         </li>
                         <li>
-                            <Link href='/cadastrolivro'> Cadastrar Livro</Link>
+                            <Link href='/Cadastrolivro'> Cadastrar Livro</Link>
                         </li>
                     </>
 

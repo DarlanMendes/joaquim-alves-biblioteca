@@ -11,7 +11,7 @@ import Image from "next/image"
 interface propsLivro {
     role: string
 }
-export default function cadastrolivro(props: propsLivro) {
+export default function Cadastrolivro(props: propsLivro) {
     const [isActived, setIsActived] = useState(false)
     const[livro, setLivro]=useState(
         {titulo:'',autor:'',descricao:'',src:'/../../../public/assets/livroIMG.png',registro:'',genero:'',editora:''}
