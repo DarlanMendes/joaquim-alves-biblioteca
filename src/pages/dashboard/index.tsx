@@ -5,6 +5,8 @@ import NavBar from "@/components/NavBar";
 import MenuHamburguer from "@/components/MenuHamburguer";
 import { useState } from "react";
 import {getSession} from 'next-auth/react'
+import { useRouter } from "next/router";
+import Loading from "@/components/Loading";
 interface livros {  
     id:string,
   src:string,
@@ -20,7 +22,11 @@ interface arrayLivros extends Array<livros>{}
 
 export default function Dashboard(props:props){
     const[isActived, setIsActived]= useState(false)
-    
+
+   if(true){return(
+    <Loading/>
+   )}
+   
     return(
         <div className={styles.dashboardContainer}> 
         <div className={styles.containerCards}>
@@ -34,7 +40,7 @@ export default function Dashboard(props:props){
             <NavBar setIsActived={setIsActived}/>
        {props?.livros.map((livro,index)=>(
         <div key={index}>
-            <CardLivro  titulo={livro.titulo} src={livro.src} descricao={livro.descricao}/>
+            <CardLivro  autor={livro.autor} titulo={livro.titulo} src={livro.src} descricao={livro.descricao}/>
         </div>
        ))}
         
@@ -63,14 +69,21 @@ export async function getServerSideProps(context:any) {
     if(session.user?.email?.includes('@prof.ce.gov.br')){
         return {props:{
             role:'professor',
-            livros: JSON.parse(JSON.stringify(data))
-        }}
+            livros: JSON.parse(JSON.stringify(data)),
+            
+        }
+       
+    }
     }
     if(session.user?.email?.includes('@aluno.ce.gov.br')){
         return {props:{
             role:'aluno',
-            livros: JSON.parse(JSON.stringify(data))
-        }}
+            livros: JSON.parse(JSON.stringify(data)),
+            
+
+        }
+       
+    }
     }
     return{
         redirect:{

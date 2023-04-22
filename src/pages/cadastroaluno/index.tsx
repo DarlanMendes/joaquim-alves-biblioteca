@@ -7,7 +7,7 @@ import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Loading from '@/components/Loading';
-import ConvertImageString from './../../lib/ConvertImageString'
+import ConvertImageString from '../../lib/ConvertImageString'
 interface props {
     role: string,
 

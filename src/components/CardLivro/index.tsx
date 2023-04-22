@@ -10,7 +10,7 @@ interface CardItems{
    autor:string
 }
 export default function CardLivro(props:CardItems){
-    console.log(props.src)
+    
     return(
         <div className={styles.mainContainer}>
             <Image src={props.src} height={100} width={100}sizes={'100%'} alt='livro'/>:
