@@ -1,17 +1,23 @@
+
 import styles from './styles.module.scss';
+import Image from 'next/image';
 
 
 interface CardItems{
     src:string,
     titulo:string,
    descricao:string,
+   autor:string
 }
 export default function CardLivro(props:CardItems){
+    console.log(props.src)
     return(
         <div className={styles.mainContainer}>
-            <img src={props?.src?props.src:'/../public/assets/livroIMG.png'} height={100} width={100}sizes={'100%'} alt='livro'/>
+            <Image src={props.src} height={100} width={100}sizes={'100%'} alt='livro'/>:
+           
+            
             <h3>{props.titulo}</h3>
-            <p>{props.descricao}</p>
+            <p>{props.autor}</p>
         </div>
     )
 }

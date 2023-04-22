@@ -7,13 +7,14 @@ import ConvertImageString from "@/lib/ConvertImageString"
 import axios from 'axios'
 import { useRouter } from "next/router"
 import Loading from "@/components/Loading"
+import Image from "next/image"
 interface propsLivro {
     role: string
 }
 export default function cadastrolivro(props: propsLivro) {
     const [isActived, setIsActived] = useState(false)
     const[livro, setLivro]=useState(
-        {titulo:'',autor:'',descricao:'',src:'',registro:'',genero:'',editora:''}
+        {titulo:'',autor:'',descricao:'',src:'/../../../public/assets/livroIMG.png',registro:'',genero:'',editora:''}
     )
     const[loading, setLoading] = useState(false)
     const router = useRouter()
@@ -50,7 +51,7 @@ export default function cadastrolivro(props: propsLivro) {
             <div className={styles.containerCadastro}>
                 <h1>Cadastro livro</h1>
                 <div className={styles.inputContainer}>
-                    <img src={livro.src} alt="imagem do livro" />
+                    <Image src={livro.src} width={100} height={100}alt="imagem do livro" />
                     <input type="file" className={styles.inputFile} onChange={handleImageLivro}/>
                     <div>
                         <input type='text' placeholder="Digite o título do livro" name='titulo' onChange={handleInput}/>
