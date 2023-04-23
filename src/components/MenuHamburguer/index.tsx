@@ -26,6 +26,9 @@ export default function MenuHamburguer(props: propsHamburguer) {
                         <li>
                             <Link href='/cadastrolivro'> Cadastrar Livro</Link>
                         </li>
+                        <li>
+                            <Link href='/listaralunos'> Listar Alunos</Link>
+                        </li>
                     </>
 
                 }

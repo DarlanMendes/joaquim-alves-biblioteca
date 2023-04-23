@@ -3,7 +3,7 @@ import NavBar from '@/components/NavBar';
 import MenuHamburguer from '@/components/MenuHamburguer';
 import styles from './styles.module.scss';
 import { getSession } from 'next-auth/react';
-//import * as ImageConversion from 'image-conversion';
+import avatar from '../../../public/assets/livroIMG.png'
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Loading from '@/components/Loading';
@@ -17,29 +17,30 @@ interface props {
 export default function CadastroAluno(props: props) {
     const [isActived, setIsActived] = useState(false);
     const [aluno, setAluno] = useState(
-        { nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: '../../../public/assets/logoJA.png' }
+        { nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: `${avatar}` }
     )
     const[loading, setLoading]=useState(false)
     const router = useRouter()
     
    async function cadastrarAluno(){
    setLoading(true)
+   const{nome, serie, turma, turno, endereco,numero,bairro,telefone,email,img}=aluno
     try{
         const response = await axios.post(`${ router.asPath.split('/')[0]}/api/colecaoAluno`,{
-            nome:aluno.nome,
-            serie:aluno.serie,
-            turma:aluno.turma,
-            turno:aluno.turno,
-            endereco:aluno.endereco,
-            numero:aluno.numero,
-            bairro:aluno.bairro,
-            telefone:aluno.telefone,
-            email:aluno.email,
-            img:aluno.img
+            nome,
+            serie,
+            turma,
+            turno,
+            endereco,
+            numero,
+            bairro,
+            telefone,
+            email,
+            img
         })
         setLoading(false)
         alert(response.data.mensagem)
-        setAluno({ nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: '../../../public/assets/logoJA.png' })
+        setAluno({ nome: '', serie: '', turma: '', turno: '', endereco: '', numero: '', bairro: '', telefone: '', email: '', img: '/../public/assets/logoJA.png' })
     }catch(e){
         alert(e)
         setLoading(false)
