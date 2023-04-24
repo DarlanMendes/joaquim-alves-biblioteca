@@ -2,19 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MongoDB } from '../../../lib/MongoDB'
 
-// type Data = {
-//     nome: string,
-//     serie: string,
-//     turma: string,
-//     turno: string,
-//     endereco: string,
-//     numero: string,
-//     bairro: string,
-//     telefone: string,
-//     email: string,
-//     img: string,
 
-// }
 
 export default async function handler(
     req: NextApiRequest,
@@ -22,13 +10,28 @@ export default async function handler(
 ) {
     
     if (req.method === 'GET') {
+        const { db } = await MongoDB();
+        const alunos = db.collection('alunos');
+       
         res.status(200).json({ mensagem: 'Olá' })
     }
 
     if (req.method === 'POST') {
         const { db } = await MongoDB();
         const alunos = db.collection('alunos');
+        const {busca,filtro} = req.body
+        console.log()
+        if(filtro){
+            const alunosBuscado = await alunos.find({ [filtro]: { $regex: new RegExp(busca) } }).toArray()
+            if(alunosBuscado.length>0){
+             return res.send(alunosBuscado)
+            } else{
+             return res.status(404)
+            }
+         }
         const { nome, serie, turma, turno, endereco, numero, bairro, telefone, email, img } = req.body
+
+
         const alunoExiste = await alunos.findOne({ email })
         if (!alunoExiste) {
             if (nome && serie && turma && turno && endereco && numero && bairro && telefone && email && img) {

@@ -49,6 +49,12 @@
             }
         }
     }
+    .naoEncontrado{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+    }
     .alunoContainer{
         display: grid;
         justify-content: center;
