@@ -52,8 +52,8 @@ export default function listarAlunos(props: Props) {
                     </div>
 
                 </div>
-                {alunos.length>0? alunos.map((aluno) => (
-                    <div className={styles.alunoContainer}>
+                {alunos.length>0? alunos.map((aluno, index) => (
+                    <div className={styles.alunoContainer} key={index}>
                         <div className={styles.image}>
                             <img src={aluno.img} alt='' />
                         </div>
