@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 import { getSession } from 'next-auth/react'
-import { MongoDB } from '@/lib/MongoDB'
+import Image from 'next/image'
 import Header from '@/components/Header'
 import { useState } from 'react'
 import axios from 'axios'
@@ -24,7 +24,7 @@ interface Props {
     role: string,
 }
 
-export default function listarAlunos(props: Props) {
+export default function ListarAlunos(props: Props) {
     const router = useRouter()
     const [alunos, setAlunos] = useState<alunosArray>([])
     const[filtro,setFiltro]=useState('nome')
@@ -55,7 +55,7 @@ export default function listarAlunos(props: Props) {
                 {alunos.length>0? alunos.map((aluno, index) => (
                     <div className={styles.alunoContainer} key={index}>
                         <div className={styles.image}>
-                            <img src={aluno.img} alt='' />
+                            <Image src={aluno.img} alt='' />
                         </div>
 
                         <div className={styles.dadosAluno}>
